@@ -16,7 +16,7 @@ The project aims to provide a transparent and shareable workflow that can be reu
 
 ---
 ## 🗂 Repository structure
-scRNAseq_FFA_skin/
+```scRNAseq_FFA_skin/
 ├── data/ # Scripts or symbolic links to raw data (not uploaded)
 ├── scripts/ # Analysis scripts (R/Seurat pipeline)
 │ ├── 01_preprocessing.R
@@ -27,7 +27,7 @@ scRNAseq_FFA_skin/
 ├── results/ # Intermediate outputs (RDS objects, plots, tables)
 ├── docs/ # Documentation and protocol notes
 ├── environment.yml # Conda environment for reproducibility
-└── README.md # Project description
+└── README.md # Project description```
 
 ---
 
