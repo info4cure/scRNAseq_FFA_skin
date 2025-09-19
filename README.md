@@ -15,66 +15,92 @@ The project aims to provide a transparent and shareable workflow that can be reu
 - Provide a reproducible and publishable workflow following FAIR principles.  
 
 ---
+
 ## 🗂 Repository structure
-```scRNAseq_FFA_skin/
-├── data/ # Scripts or symbolic links to raw data (not uploaded)
-├── scripts/ # Analysis scripts (R/Seurat pipeline)
-│ ├── 01_preprocessing.R
-│ ├── 02_qc_filtering.R
-│ ├── 03_clustering.R
-│ ├── 04_diff_expr.R
-│ └── 05_pathway_analysis.R
-├── results/ # Intermediate outputs (RDS objects, plots, tables)
-├── docs/ # Documentation and protocol notes
-├── environment.yml # Conda environment for reproducibility
-└── README.md # Project description```
+```plaintext
+scRNAseq_FFA_skin/
+├── data/               # Symbolic links to raw data or metadata (not uploaded)
+├── scripts/            # Analysis scripts (R/Seurat pipeline)
+│   ├── 01_preprocessing.R
+│   ├── 02_qc_filtering.R
+│   ├── 03_clustering.R
+│   ├── 04_diff_expr.R
+│   ├── 05_pathway_analysis.R
+│   ├── 06_celltype_annotation.R
+│   ├── 07_ridgeplots_gsva.R
+│   ├── 08_pseudotime_analysis.R
+│   └── 09_cellchat_analysis.R
+├── results/            # Intermediate outputs (RDS objects, plots, tables)
+├── docs/               # Documentation and protocol notes
+├── config/             # Configuration files (YAML, metadata)
+├── environment.yml     # Conda environment for reproducibility
+└── README.md           # Project description
+```
+# Analysis pipeline for scRNA-seq in FFA skin biopsies
 
----
+This directory contains R scripts that implement a reproducible workflow for single-cell RNA-seq data analysis using Seurat and complementary packages.
 
-## ⚙️ Installation & requirements
-We recommend using **Conda** for reproducibility.
+### Workflow overview
 
-```bash
-# Create environment
-conda env create -f environment.yml
+1. **01_qc.R**
+   - Load CellRanger outputs (`matrix.mtx`, `barcodes.tsv`, `features.tsv`)
+   - Create Seurat object(s)
+   - Perform initial quality control (mitochondrial %, number of genes, number of UMIs)
+   - Save filtered objects for downstream steps
 
-# Activate environment
-conda activate scRNAseq_FFA
-Dependencies will include R (Seurat, tidyverse) or Python (Scanpy, anndata), depending on the chosen workflow.
+2. **02_normalization_integration.R**
+   - Normalize data with `SCTransform`
+   - Integrate multiple samples (CCA or RPCA-based integration)
+   - Save integrated Seurat object
 
-🚀 Usage
+3. **03_dimreduction_clustering.R**
+   - Run PCA and UMAP/t-SNE
+   - Identify clusters (`FindNeighbors`, `FindClusters`)
+   - Save Seurat object with clustering metadata
 
-Example (R/Seurat-based):
+4. **04_marker_annotation.R**
+   - Find cluster markers (`FindAllMarkers`)
+   - Annotate cell types using canonical markers and/or automated tools (e.g., `SingleR`)
+   - Save annotation results
 
-# Preprocessing
-Rscript scripts/01_preprocessing.R
+5. **05_differential_expression.R**
+   - Compare expression profiles between FFA vs Controls
+   - Export DEG tables for downstream validation
 
-# QC and filtering
-Rscript scripts/02_qc_filtering.R
+6. **06_pathway_analysis.R**
+   - Run enrichment analysis (e.g., GO, Reactome, KEGG)
+   - Apply GSVA or GSEA to cluster-level or pseudobulk data
+   - Save results
+
+7. **07_figures.R**
+   - Generate final publication-ready figures:
+     - UMAP plots
+     - Heatmaps
+     - Dot plots
+     - Volcano plots
+   - Export figures in 300 dpi TIFF/PNG
+
+### Advanced modules
+
+8. **08_ridgeplots_gsva.R**
+   - Performs GSVA using curated gene sets (immune pathways, keratinocyte biology, fibrosis, etc.).
+   - Generates ridge plots to visualize pathway activity across cell subtypes or clusters.
+   - Outputs tables of GSVA enrichment scores and publication-ready plots.
+
+9. **09_pseudotime_analysis.R**
+   - Constructs pseudotime trajectories using Monocle3 or Slingshot.
+   - Identifies genes/pathways dynamically regulated along differentiation axes.
+   - Exports pseudotime plots and gene expression trends.
+
+10. **10_cellchat_analysis.R**
+   - Infers intercellular communication networks using `CellChat`.
+   - Identifies enriched ligand–receptor interactions between FFA vs controls.
+   - Generates chord diagrams, bubble plots, and network graphs.
 
 
-Example (Python/Scanpy-based):
+### Notes
+- All scripts should be run sequentially.
+- Parameters are stored in `config/config.yaml`.
+- Intermediate objects are saved in `results/` for reproducibility.
+- Use `set.seed()` for consistent results across runs.
 
-python scripts/01_preprocessing.py
-python scripts/02_qc_filtering.py
-
-📊 Results
-
-Figures and tables will be stored in results/.
-
-Documentation of each step will be provided in docs/.
-
-📖 Citation
-
-Once the project is finalized, all releases will be archived on Zenodo, with a DOI that can be cited in publications.
-
-📜 License
-
-This project is released under the MIT License. You are free to use, modify, and distribute it, provided that proper credit is given.
-
-👨‍🔬 Author
-
-Juan Ruano, MD, PhD, MSc
-Immune-mediated Inflammatory Skin Diseases Laboratory (GC29),
-IMIBIC / University of Córdoba,
-Reina Sofía University Hospital, Spain.
