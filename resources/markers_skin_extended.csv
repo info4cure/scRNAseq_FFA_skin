@@ -1,0 +1,34 @@
+CellType,Subtype,Markers
+Keratinocytes,Basal,KRT5;KRT14;TP63;ITGA6;CD49f
+Keratinocytes,Spinous,KRT1;KRT10;IVL
+Keratinocytes,Granular,LOR;FLG;KRT2
+Keratinocytes,Follicular,KRT25;KRT27;KRT71;KRT75
+Immune,T cells CD4+,CD3D;CD3E;CD4
+Immune,T cells CD8+,CD3D;CD3E;CD8A;CD8B
+Immune,Treg,FOXP3;IL2RA;CTLA4
+Immune,Th1,TBX21;IFNG;STAT1
+Immune,Th2,GATA3;IL4;IL13
+Immune,Th17,RORC;IL17A;IL22
+Immune,Th22,IL22;AHR;CCR10
+Immune,Th9,IL9;PU.1;IRF4
+Immune,MAIT,TRAV1-2;KLRB1;IL18RAP;SLC4A10
+Immune,NK cells,NCAM1;KLRD1;NKG7;GZMB;PRF1
+Immune,B cells,MS4A1;CD79A;CD19
+Immune,Plasma cells,MZB1;SDC1;XBP1;JCHAIN
+Immune,Dendritic cells cDC1,CLEC9A;BATF3;XCR1
+Immune,Dendritic cells cDC2,CD1C;FCER1A;IRF4
+Immune,Dendritic cells pDC,LILRA4;IL3RA;TCF4;GZMB
+Immune,Macrophages,CD68;CD163;MRC1;MARCO
+Immune,Langerhans cells,CD207;CD1A;Langerin
+Fibroblasts,Papillary,PDPN;COL6A3;MMP3
+Fibroblasts,Reticular,POSTN;COL1A1;COL1A2;FAP
+Fibroblasts,Pro-inflammatory,CCL19;CCL21;CXCL12
+Fibroblasts,Myofibroblasts,ACTA2;TAGLN;CNN1
+Sebocytes,,PPARG;PLIN2;FABP4;DGAT2
+Adipocytes,,ADIPOQ;LEP;PLIN1;FABP4
+Endothelial cells,Blood,VWF;PECAM1;CD34
+Endothelial cells,Lymphatic,PROX1;PDPN;LYVE1
+Pericytes,,PDGFRB;RGS5;CSPG4
+Mast cells,,TPSAB1;CPA3;KIT;MS4A2
+Schwann cells,,PLP1;SOX10;MBP;MPZ
+Melanocytes,,PMEL;MLANA;TYR;DCT
