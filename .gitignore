@@ -1,8 +1,9 @@
+# --- R project defaults ---
 # History files
 .Rhistory
 .Rapp.history
 
-# Session Data files
+# Session data
 .RData
 .RDataTmp
 
@@ -21,59 +22,44 @@
 # RStudio files
 .Rproj.user/
 
-# produced vignettes
+# Vignettes
 vignettes/*.html
 vignettes/*.pdf
 
-# OAuth2 token, see https://github.com/hadley/httr/releases/tag/v0.3
+# OAuth2 token
 .httr-oauth
 
-# knitr and R markdown default cache directories
+# knitr and R markdown cache
 *_cache/
 /cache/
 
-# Temporary files created by R markdown
+# Temporary files from R markdown
 *.utf8.md
 *.knit.md
 
-# R Environment Variables
+# R environment variables
 .Renviron
 
 # pkgdown site
 docs/
 
-# translation temp files
+# Translation temp files
 po/*~
 
-# RStudio Connect folder
+# RStudio Connect
 rsconnect/
+
+# macOS
 .DS_Store
 
-# Ignore large outputs
+# --- Project-specific ignores ---
+# Large outputs (do not version heavy results)
 results/*.RDS
 results/RDS/*
 results/*.h5ad
+
+# Raw data and large matrices
 data/*
 *.mtx
 *.tsv
 *.csv
-# R temporary files
-.Rhistory
-.RData
-.Rproj.user/
-
-
-# Ignore large outputs
-results/*.RDS
-results/RDS/*
-results/*.h5ad
-data/*
-*.mtx
-*.tsv
-*.csv
-
-# R temporary files
-.Rhistory
-.RData
-.Rproj.user/
-
