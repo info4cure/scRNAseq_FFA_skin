@@ -43,6 +43,10 @@ scripts/*_checkpoint.RDS
 *.temp.RDS
 *.checkpoint.RDS
 
+# General ignore rules for temporary or checkpoint files
+*temp*
+*checkpoint*
+
 # R environment variables
 .Renviron
 
