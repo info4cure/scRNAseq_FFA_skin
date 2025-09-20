@@ -48,3 +48,17 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 .DS_Store
+
+# Ignore large outputs
+results/*.RDS
+results/RDS/*
+results/*.h5ad
+data/*
+*.mtx
+*.tsv
+*.csv
+# R temporary files
+.Rhistory
+.RData
+.Rproj.user/
+
