@@ -37,6 +37,12 @@ vignettes/*.pdf
 *.utf8.md
 *.knit.md
 
+# Temporary or checkpoint RDS files
+scripts/*_temp.RDS
+scripts/*_checkpoint.RDS
+*.temp.RDS
+*.checkpoint.RDS
+
 # R environment variables
 .Renviron
 
