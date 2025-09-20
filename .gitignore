@@ -62,14 +62,25 @@ rsconnect/
 # macOS
 .DS_Store
 
-# --- Project-specific ignores ---
-# Large outputs (do not version heavy results)
-results/*.RDS
-results/RDS/*
-results/*.h5ad
+# ==========================
+# Ignore large data outputs
+# ==========================
 
-# Raw data and large matrices
-data/*
+# Ignore raw data and big outputs, but keep README.md placeholders
+data/*/*
+!data/*/README.md
+
+results/*/*
+!results/*/README.md
+
+# Typical large bioinformatics files
 *.mtx
 *.tsv
 *.csv
+*.h5
+*.h5ad
+*.rds
+*.RDS
+
+# Extra R session files
+.Rproj.user/
